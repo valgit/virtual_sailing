@@ -1,0 +1,5 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="archery60x60.png" />
+    <bitmap id="HeartIcon" filename="Heart20x20.png" />
+    <bitmap id="bticon" filename="Bluetooth32.png" />
+</drawables>

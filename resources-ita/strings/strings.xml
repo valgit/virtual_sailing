@@ -1,0 +1,56 @@
+<strings>
+    <string id="AppName">Archery</string>
+ 
+    <string id="AppVersionTitle">App Versione</string>
+    <string id="prompt">Premere Avvio\nper Cominciare</string>
+    <string id="gpsprompt">Attendere...</string>
+    <string id="sureprompt">Sei sicuro/a ?</string>
+    <string id="restprompt">riposo</string>
+   <string id="setTargetDistPrompt">Immettere la distanza target in metri</string>
+	<string id="setTargetDistError">La distanza dal bersaglio non può essere superiore a 100 metri</string>
+
+    <string id="archery_save">Salvataggio...</string>
+    <string id="archery_discard">Annullamento...</string>
+
+    <string id="menu_label_1">Riprendi</string>
+    <string id="menu_label_2">Salva</string>
+    <string id="menu_label_3">Annulla</string>
+
+    <string id="menu_gps">GPS</string>
+    <string id="menu_version">Versione</string>
+  
+    <string id="archery_currentarrow">Freccia Corrente</string>  
+	<string id="archery_currentend">Volée Corrente</string>  
+    <string id="archery_totalarrow">Tiri Cumulativi</string>  
+	<string id="archery_totalend">Volée Cumulative</string>  
+    <string id="archery_unitarrow">Tiri</string>
+	<string id="archery_unitend">Volée</string>
+	<string id="archery_timeperarrow">Tempo Medio per Freccia</string>  
+	<string id="archery_time">s/freccia</string>
+    <string id="archery_endtime">s/volée</string>
+	<string id="archery_currentarrow_title">Freccia Corrente</string>
+	<string id="archery_currentend_title">Volée Corrente</string>
+	<string id="archery_timeperarrow_title">Tempo Medio per Freccia</string>  
+	<string id="archery_arrows">Frecce</string>  
+    <string id="archery_ends">Volée</string>  
+    <string id="archery_timeperend_title">Tempo Medio per Volée</string>  
+    <string id="archery_timeperend">Tempo per Volée</string>  
+    <string id="archery_arrowperend">Frecce per Volée</string>
+    <string id="archery_avgendtime">Tempo Medio per Volée</string>
+    <string id="archery_maxtimeperarrow">Tempo Max per Freccia</string> 
+    <string id="archery_avgtimeperarrow">Tempo Medio per Freccia</string> 
+
+    <string id="Summary_time">Tempo:</string>
+    <string id="Summary_time_val">00:00</string>
+    <string id="Summary_calories">Calorie:</string>
+    <string id="Summary_calories_val">0</string>
+    <string id="Summary_avgHR">Media h:</string>
+    <string id="Summary_maxHR">Max   h:</string>
+    <string id="Summary_avgHR_val">0</string>
+    <string id="Summary_maxHR_val">0</string>
+
+    <string id="Summary_totalArrow">Frecce Totali:</string>
+    <string id="Summary_totalEnd">Volée Totali:</string>
+    <string id="Summary_totalArrow_val">0</string>
+    <string id="Summary_totalEnd_val">0</string>
+</strings>

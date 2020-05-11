@@ -1,0 +1,1 @@
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.el7_5.x86_64/bin/java -Dfile.encoding=UTF-8 -Dapple.awt.UIElement=true -jar /home/fr20033/Documents/garmin/ConnectIQ/bin/monkeybrains.jar -o /home/fr20033/eclipse-workspace/archery/bin/archery.prg -w -y /home/fr20033/Documents/developer_key -f /home/fr20033/eclipse-workspace/archery/monkey.jungle

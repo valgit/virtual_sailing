@@ -1,0 +1,322 @@
+
+app Uuid 
+
+Release : 
+ac32ddc2935e42beb372d364f909cccf
+
+Beta :
+e229f45a078242d0a4d363d50edceed3
+
+
+
+        
+        // connected phone status :
+		if(btAvailable == null)  {
+		            var settings = System.getDeviceSettings();
+		            btAvailable = settings has :phoneConnected;
+		}
+		
+
+
+	     // let's draw a rotating arc to show we're loading stuff ..
+        dc.setPenWidth(3);
+        degreeStart = degreeStart%360;
+        dc.drawArc(dw/2, dh/2, dw*3/7, Gfx.ARC_COUNTER_CLOCKWISE, degreeStart, degreeStart+24);
+        degreeStart = degreeStart - 6;
+        
+
+        class MyViewDelegate extends Ui.BehaviorDelegate {
+
+
+ On the va, there are 9 "tap regions" (3x3) on the screen. This code uses the top left region
+ 
+	function onTap(evt) {
+	    var xy=evt.getCoordinates();
+		if(xy[0]>0 && xy[0]<(width*.33) && xy[1]>0 && xy[1]<(height*.33)) {
+	              // do what you need to do here					}
+		}
+	}
+}
+
+
+render the app title and/or typical information on the initial view and set a timer to push a new view (which would be your menu) a second
+
+class SomeView extends Ui.View {
+
+    var startupTimer;
+    var isFirstTime = true;
+
+    function initialize(ident,page) {
+        startupTime = new Timer.Timer();
+    }
+
+    function onShow() {
+        if (isFirstTime) {
+            isFirstTime = false;
+            startupTimer.start( method(:startupTimerCallback), 1000,  false );
+        }
+    }
+
+    function onUpdate(dc) {
+        if (isFirstTime) {
+            // render the startup view (title, version, etc) here...
+        }
+    }
+
+
+    function startupTimerCallback() {
+        Ui.pushView(new Rez.Menus.MainMenu(), new MainMenuInputDelegate(), Ui.SLIDE_LEFT);
+    }
+
+}
+
+===============================
+dc.setColor(ClrBlack,ClrBlack);
+dc.clear();
+
+var y = 4;
+fillRect(dc,0,0,cxScreen,FntAscent[F4],ClrYellow);
+y += drawTextY(dc,xCenter,y,F4,"Accel",JC,ClrWhite);
+"F4 LARGE" 
+var FntAscent; //[FCount] - base line of font to top of box (last pixel in zero)
+FntAscent.add(Gfx.getFontAscent(f));//+1;
+
+const ClrWhite = 0xFFFFFF;//Gfx.COLOR_WHITE;      
+const ClrYellow = 0xFFAA00; //Gfx.COLOR_YELLOW;
+        
+      function drawPauseScreen(dc)
+{
+    dc.setPenWidth(6);
+    drawCircle(dc,xCenter,yCenter,xCenter-2,ClrRed);
+    drawRect(dc,xCenter-25,yCenter-25,50,50,ClrRed);
+}      
+
+
+*session name : 
+
+:name=>"diving_"+Time.now().value(), // set session name
+
+
+Question: “How do I get the step data for today?”
+
+Import the ActivityMonitor
+
+using Toybox.ActivityMonitor as Act;
+
+In the function you want to use it in, eg. onUpdate(dc)
+
+var actInfo = Act.getInfo();
+if (actInfo != null) {
+steps = actInfo.steps;
+if (steps == null) {steps = 0;}
+var stepGoal = actInfo.stepGoal;
+if (stepGoal == null) {stepGoal = 1;}
+
+// Do stuff
+}
+
+FIT time data :
+
+wavetimeField.setData((TOT_TIME2/60)%60+TOT_TIME2%60/100.0);
+
+wavetimeField = createField("wavetime", 2, Fit.DATA_TYPE_FLOAT, { :mesgType=>Fit.MESG_TYPE_SESSION });
+
+ <fitField id="2" displayInActivitySummary="true" sortOrder="2" precision="2" dataLabel="@Strings.wavetime_label" unitLabel="@Strings.wavetime_units" />
+
+
+font size :
+
+if(fontHeight==xyz) {fontHeight-=10;}
+
+A small adjust to a given font height, which can be based on things like shape, width and height if need be.
+
+fenix 3 : 
+
+fnt large : 38
+fnt asc large : 30
+
+fnt num mild  : 32
+fnt asc num mild  : 28
+
+fnt  medium  : 29
+fnt ascent medium  : 23
+
+fnt num medium  : 60
+fnt ascent num medium  : 53
+
+fenix 5 :
+
+fnt large : 37
+fnt asc large : 29
+
+fnt num mild  : 26
+fnt asc num mild  : 26
+
+fnt  medium  : 34
+fnt ascent medium  : 27
+
+fnt num medium  : 36
+fnt ascent num medium  : 36
+
+vivoactive3 :
+
+fnt large : 34
+fnt asc large : 27
+
+fnt num mild  : 39
+fnt asc num mild  : 31
+
+fnt  medium  : 34
+fnt ascent medium  : 27
+
+fnt num medium  : 48
+fnt ascent num medium  : 38
+
+
+* Don't search for the drawable you want to change every frame. If you are going to need to access the drawable often, look for it once and cache the result.
+* Don't set the resource for something unless your program state has changed.
+
+
+===================
+I've tried this as a Fit.MESG_TYPE_RECORD (snip below) and as Fit.MESG_TYPE_SESSION (total_distance :nativeNum=>9)
+
+relevant code snips
+
+// initialization of dist, the id is unique 
+dist = DataField.createField("distance", 1,Fit.DATA_TYPE_FLOAT,{:nativeNum=>5, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>"m" });
+
+...
+//later in code
+dist.setData(distance_m); // in meters as a float
+
+
+
+FitContributor XML
+<fitField id="1" 
+displayInChart="false"
+displayInActivitySummary="false" 
+sortOrder = "0" 
+precision="2"
+dataLabel="@Strings.distance_label" 
+unitLabel="@Strings.distance_unitsm" />
+
+"distance", DATA_TYPE_UINT32,{:nativeNum=>5, MESG_TYPE_RECORD, :units=>"m" 
+
+====================================
+Here’s the specific native numbers for power as well as the steps to look up native numbers for any fields:
+Download the FIT sdk: https://www.thisisant.com/resources/FIT
+Open the profile spreadsheet
+Switch to the Messages tab
+Scroll to the Activity File Messages section
+Look up field numbers and units in the appropriate subsection.
+Summary fields - Subsection: session
+
+avg_power = 20 (units: watts)
+max_power = 21
+Lap fields - Subsection: lap
+
+avg_power = 19
+max_power = 20
+Activity graph fields - Subsection: record
+
+power = 7
+
+e.g. Create a field that’s equivalent to power in the activity graph:
+Code:
+var powerField = createField("Power", fieldId, FitContributor.DATA_TYPE_UINT16,
+                             {:mesgType => Fit.MESG_TYPE_RECORD, :units => "W", :nativeNum => 7});
+
+
+=========================
+
+__GPS__
+
+function drawGPS(dc) {
+var gpsinfo = Pos.getInfo();
+var gpsIsOkay = ( gpsinfo.accuracy == Pos.QUALITY_GOOD || gpsinfo.accuracy == Pos.QUALITY_USABLE );
+
+dc.setColor( Functions.getGPSQualityColour(gpsinfo), Gfx.COLOR_BLACK);
+dc.fillRectangle(0, 30, dc.getWidth(), 2);
+}
+
+
+__prefs__
+ //! Load preferences for the view from the object store.
+//! This can be called from the app when the settings have changed.
+function loadPreferences() {
+exerciseDelay = Prefs.getExerciseDuration();
+restDelay = Prefs.getRestDuration();
+maxExerciseCount = Prefs.getExerciseCount();
+activityType = Prefs.getActivityType();
+notificationPolicy = Prefs.getNotificationPolicy();
+allowVibration = (Attention has :vibrate) && (Sys.getDeviceSettings().vibrateOn) && (Prefs.isAllowVibration());
+allowTone = (Attention has :playTone) && (Sys.getDeviceSettings().tonesOn) && (Prefs.isAllowTone());
+}
+
+
+
+==============================
+last known location 
+
+var curLoc = Activity.getActivityInfo().currentLocation;
+if (curLoc != null) {
+    long = curLoc.toDegrees()[1];
+    lat= curLoc.toDegrees()[0];
+}
+
+===== prefs ? ========
+
+//! Return the boolean value for the preference
+//! @param name the name of the preference
+//! @param def the default value if preference value cannot be found
+function getBoolean(name, def) {
+var app = App.getApp();
+var pref = def;
+
+if (app != null) {
+    pref = app.getProperty(name);
+
+    if (pref != null) {
+        if (pref instanceof Toybox.Lang.Boolean) {
+            return pref;
+        }
+
+        if (pref == 1) {
+            return true;
+        }
+    }
+}
+
+// Default
+return pref;
+}
+
+>>    usage :
+
+//! Return boolean of vibration setting
+function getAllowVibration() {
+    var value = getBoolean(ALLOW_VIBRATION, true);
+    return value;
+}
+
+// a voir :
+:sport=>ARec.SPORT_TRAINING , :subSport=>ARec.SUB_SPORT_FLEXIBILITY_TRAINING 
+if(Toybox has :FitContributor)
+
+supportsRecording = Toybox has :ActivityRecording;          
+
+
+            //Stock Fields          
+            timeInPowerZone = customField.createField(Ui.loadResource(Rez.Strings.TimeInPowerZone), 3, Fit.DATA_TYPE_UINT32,     
+                {
+                :mesgType => Fit.MESG_TYPE_SESSION,
+                :nativeNum=>68,
+                :units => Ui.loadResource(Rez.Strings.unit_Duration)
+                });         
+            
+            timeStanding = customField.createField(Ui.loadResource(Rez.Strings.TimeStanding), 4, Fit.DATA_TYPE_UINT32,   
+                {
+                :mesgType => Fit.MESG_TYPE_SESSION,
+                :nativeNum=>112,
+                :units => Ui.loadResource(Rez.Strings.unit_Duration)
+                }); 

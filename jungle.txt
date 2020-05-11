@@ -1,0 +1,16 @@
+project.manifest = manifest.xml
+
+# fix autobuild to a specific device
+base.sourcePath=$(vivoactive3.sourcePath)
+
+# define the actual sourcePaths
+fenix3.sourcePath=source;source-fenix3
+fenix3_hr.sourcePath=source;source-fenix3_hr
+fenix5.sourcePath=source;source-fenix5
+fenix5plus.sourcePath=source;source-fenix5plus
+fenix5s.sourcePath=source;source-fenix5s
+fenix5splus.sourcePath=source;source-fenix5splus
+fenix5x.sourcePath=source;source-fenix5x
+fenix5xplus.sourcePath=source;source-fenix5xplus
+vivoactive3.sourcePath=source;source-vivoactive3
+vivoactive3m.sourcePath=source;source-vivoactive3m

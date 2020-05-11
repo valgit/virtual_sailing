@@ -1,0 +1,34 @@
+<strings>
+    <string id="AppName">Virtual Sailing</string>    
+
+    <string id="AppVersionTitle">App Version</string>
+    
+    <string id="prompt">Press Start\nto Begin</string>
+    
+    <string id="sureprompt">Are you sure ?</string>
+    <string id="restprompt">rest</string>
+
+    <string id="virtsailing_save">Saving...</string>
+    <string id="virtsailing_discard">Discarding...</string>
+
+    <string id="menu_label_1">Resume</string>
+    <string id="menu_label_2">Save</string>
+    <string id="menu_label_3">Discard</string>
+    
+    <string id="menu_version">Version</string>
+  
+    <string id="sailing_leg">Leg</string>
+
+    <string id="Summary_time">Time:</string>
+    <string id="Summary_time_val">00:00</string>
+    <string id="Summary_calories">Calories:</string>
+    <string id="Summary_calories_val">0</string>
+    <string id="Summary_avgHR">Avg. HR:</string>
+    <string id="Summary_maxHR">Max. HR:</string>
+    <string id="Summary_avgHR_val">0</string>
+    <string id="Summary_maxHR_val">0</string>
+    
+    <string id="Summary_totalLeg">Total Leg:</string>
+    <string id="Summary_totalLeg_val">0</string>
+
+</strings>

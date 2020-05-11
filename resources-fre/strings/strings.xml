@@ -1,0 +1,60 @@
+<strings>
+    <string id="AppName">Archerie</string>
+
+    <string id="AppVersionTitle">App Version</string>
+
+    <string id="prompt">Presser Start\npour Demarrer</string>
+    <string id="gpsprompt">Attente...</string>
+    <string id="sureprompt">Etes-vous sure ?</string>
+    <string id="restprompt">repos</string>
+    <string id="setTargetDistPrompt">Entrer la distance de la cible en metres</string>
+	<string id="setTargetDistError">La distance de la cible ne peut pas être plus de 100 meters</string>
+
+    <string id="archery_save">Sauvegarde...</string>
+    <string id="archery_discard">Suppression...</string>
+
+    <string id="menu_label_1">Reprendre</string>
+    <string id="menu_label_2">Sauver</string>
+    <string id="menu_label_3">Supprimer</string>
+
+    <string id="menu_gps">GPS</string>
+    <string id="menu_version">Version</string>
+
+    <string id="archery_currentarrow">flèche courante</string>  
+    <string id="archery_currentend">volée courante</string>  
+    <string id="archery_totalarrow">Total de flèches</string>  
+    <string id="archery_totalend">Total de volées</string>  
+    <string id="archery_timeperarrow">Temps moyen par flèche</string>  
+    <string id="archery_unitarrow">flèche(s)</string>
+    <string id="archery_unitend">volée(s)</string>        
+    <string id="archery_time">s/flèche</string>
+    <string id="archery_endtime">s/volée</string>
+    <string id="archery_currentarrow_title">Nombre de Flèche tirées</string>
+    <string id="archery_currentend_title">Nombre de Volées</string>
+    <string id="archery_timeperarrow_title">Temps moyen par Flèche</string>  
+    <string id="archery_arrows">Flèches</string>  
+    <string id="archery_ends">Volées</string>  
+    <string id="archery_timeperend_title">Temps par Volée</string>  
+    <string id="archery_timeperend">Temps moyen par volée</string>  
+    <string id="archery_arrowperend">Flèche par volée</string>
+    <string id="archery_avgendtime">Temps Moyen par Volée</string> 
+    <string id="archery_maxtimeperarrow">Temps Max par Flèche</string> 
+    <string id="archery_avgtimeperarrow">Temps Moyen par Flèche</string> 
+
+    <string id="Summary_time">Temps:</string>
+    <string id="Summary_time_val">00:00</string>
+    <string id="Summary_calories">Calories:</string>
+    <string id="Summary_calories_val">0</string>
+    <string id="Summary_avgHR">Moy. HR:</string>
+    <string id="Summary_maxHR">Max. HR:</string>
+    <string id="Summary_avgHR_val">0</string>
+    <string id="Summary_maxHR_val">0</string>
+
+    <string id="Summary_totalArrow">Total Flèches:</string>
+    <string id="Summary_totalEnd">Total Volées:</string>
+    <string id="Summary_totalArrow_val">0</string>
+    <string id="Summary_totalEnd_val">0</string>
+
+    <string id="step_label">total de pas:</string>
+    <string id="step_units">pas</string>
+</strings>
