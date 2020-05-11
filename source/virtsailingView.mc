@@ -178,7 +178,7 @@ class virtsailingView extends commonView {
 
         // draw color
         var fntasc = Graphics.getFontHeight(Graphics.FONT_LARGE);                   
-        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_YELLOW);
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_BLUE);
         // top                  
         dc.fillRectangle(0,0,_canvas_w,fntasc);                                     
         // bottom

@@ -72,7 +72,7 @@ class virtsailingReviewView extends Ui.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE);
         dc.clear();
 
-        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_YELLOW);
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_BLUE);
         dc.setPenWidth(2);
         dc.drawCircle(_canvas_w / 2, _canvas_h / 2, _canvas_h / 2 - 10);
         // top					
