@@ -23,8 +23,13 @@ class virtsailingModel
     // FIT recording session
     hidden var mSession;
 
-// FIT Contributions variables
-   
+    // FIT Contributions variables
+    hidden const TOTAL_LEGS_FIELD_ID = 1;   // total de manche
+    hidden const AVG_TIME_PER_LEG_FIELD_ID = 2;   //
+    
+    hidden var mSessTotalLegsField = null; // nombre de manche
+    hidden var mSessAvgTimePerLegField = null; // temps moy / manche
+    
     // Summarized and exposed statistics
     var elapsedTime;
     var calories;
@@ -76,7 +81,18 @@ class virtsailingModel
     function initializeFITsession() {
     	//System.println("initializeFITsession");
         
+		mSessTotalLegsField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_totallegs),
+            TOTAL_LEGS_FIELD_ID, 
+            FitContributor.DATA_TYPE_UINT32, 
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :units=>Ui.loadResource(Rez.Strings.virtsailing_unitleg)}
+            );
 
+        mSessAvgTimePerLegField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_avglegtime),
+            AVG_TIME_PER_LEG_FIELD_ID, 
+            FitContributor.DATA_TYPE_FLOAT, 
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :units=>Ui.loadResource(Rez.Strings.virtsailing_time)}
+            );
+            
         //System.println("initializeFITsession - out");
     }
 
@@ -163,7 +179,10 @@ class virtsailingModel
                 ((avgEnds/60)%60+avgEnds%60/100.0)  + " mm:ss" 
                 );
             */
-                                   
+            
+            mSessTotalLegsField.setData(_totalLeg.toLong());
+            mSessAvgTimePerLegField.setData(avgLegTime); // temps moy par manche
+                           
 	        mSession.save();
 	       
 	        mSession = null;
