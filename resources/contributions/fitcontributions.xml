@@ -1,14 +1,21 @@
  <fitContributions>
-		<!-- SESSION : Session Data Definitions -->
-		<fitField id="1" displayInActivitySummary="true" 
-			sortOrder = "0" 
-			precision="0"
-			dataLabel="@Strings.virtsailing_totallegs" 
-			unitLabel="@Strings.virtsailing_unitleg"  />        
-		<fitField id="2" displayInActivitySummary="true" 
-			sortOrder = "1" 
-			precision="0"
-			dataLabel="@Strings.virtsailing_avglegtime" 
-			unitLabel="@Strings.virtsailing_time"  />
+	<!-- LAP : Lap Data Definitions -->
+	<fitField id="3" displayInActivityLaps="true"
+		displayInChart="false" 
+		sortOrder = "1" 
+		precision="2"			
+		dataLabel="@Strings.virtsailing_legtime" 
+		unitLabel="@Strings.virtsailing_time" />
+	<!-- SESSION : Session Data Definitions -->
+	<fitField id="1" displayInActivitySummary="true" 
+		sortOrder = "0" 
+		precision="0"
+		dataLabel="@Strings.virtsailing_totallegs" 
+		unitLabel="@Strings.virtsailing_unitleg"  />        
+	<fitField id="2" displayInActivitySummary="true" 
+		sortOrder = "1" 
+		precision="0"
+		dataLabel="@Strings.virtsailing_avglegtime" 
+		unitLabel="@Strings.virtsailing_time"  />
 </fitContributions>
  

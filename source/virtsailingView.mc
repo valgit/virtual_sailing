@@ -249,6 +249,32 @@ class virtsailingView extends commonView {
             Graphics.TEXT_JUSTIFY_CENTER);
 
         y += Graphics.getFontAscent(Graphics.FONT_NUMBER_MEDIUM);
+
+        if (!mModel.isTimerRunning()) {
+            var raceTimeStr = mModel.getRaceTime();
+            // display race time
+          
+            //System.println("virtsailingView:: updateSportsInfo : "+raceTimeStr);
+            dc.drawText(
+                (_canvas_w / 2), 
+                y, // _canvas_h/2 + Graphics.getFontAscent(Graphics.FONT_MEDIUM), 
+                Graphics.FONT_NUMBER_MEDIUM , 
+                raceTimeStr, 
+                Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            //print running timer
+            var sttime = mModel.getTimer();
+            var timerStr = secToStr(sttime[0]);
+            dc.setColor(sttime[1], Graphics.COLOR_TRANSPARENT);
+            //System.println("virtsailingView:: updateSportsInfo : " + timerStr);
+            dc.drawText(
+                (_canvas_w / 2), 
+                y, // _canvas_h/2 + Graphics.getFontAscent(Graphics.FONT_MEDIUM), 
+                Graphics.FONT_NUMBER_MEDIUM , 
+                timerStr, 
+                Graphics.TEXT_JUSTIFY_CENTER);
+        }
+        y += Graphics.getFontAscent(Graphics.FONT_MEDIUM);
 /*        
         var _arrow = mModel.getCurrentArrow();
         dc.drawText(
@@ -311,5 +337,6 @@ class virtsailingView extends commonView {
             Graphics.TEXT_JUSTIFY_CENTER);
             
     }
+
 
 }

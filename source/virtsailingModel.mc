@@ -26,10 +26,12 @@ class virtsailingModel
     // FIT Contributions variables
     hidden const TOTAL_LEGS_FIELD_ID = 1;   // total de manche
     hidden const AVG_TIME_PER_LEG_FIELD_ID = 2;   //
-    
+    hidden const LAP_LEG_TIME_FIELD_ID = 3;
+
     hidden var mSessTotalLegsField = null; // nombre de manche
     hidden var mSessAvgTimePerLegField = null; // temps moy / manche
-    
+    hidden var mLapLegTimeField = null;
+
     // Summarized and exposed statistics
     var elapsedTime;
     var calories;
@@ -46,7 +48,10 @@ class virtsailingModel
     hidden var _totalLeg;
     hidden var _currentLeg;
 
-	//2.3hidden var mLogger;
+    var timer = null;
+    var secTot;
+	var secLeft;
+    //var raceStartTime;
 	
     /*
      * fit contributor for Record session 
@@ -55,6 +60,7 @@ class virtsailingModel
 	    // Create the new FIT fields to record to.
 		        // current values
 
+      
     	// MESG_TYPE_SESSION : once per session
     	// MESG_TYPE_LAP : once per lap
     	// MESG_TYPE_RECORD : max one per sec (real time)
@@ -72,7 +78,11 @@ class virtsailingModel
      */
     function initializeFITLap() {
         // Create the new FIT fields to record to.
-               
+        mLapLegTimeField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_legtime), 
+            LAP_LEG_TIME_FIELD_ID, 
+            FitContributor.DATA_TYPE_FLOAT, 
+            {:mesgType => FitContributor.MESG_TYPE_LAP, :units=>Ui.loadResource(Rez.Strings.virtsailing_time)}
+        );
     }
 	
     /*
@@ -154,6 +164,7 @@ class virtsailingModel
         _legStart = now;  
         _legEnd = _legStart;     
         //System.println("model - start out");
+        startTimer();
     }
 
     // Stop sensor processing
@@ -313,6 +324,7 @@ class virtsailingModel
         avgLegTime += legtime;
         _totalLeg ++;
 
+        mLapLegTimeField.setData( legtime / 1000.0);
         // addLapd should be call after all (forum info)
         mSession.addLap(); 
     }
@@ -324,6 +336,7 @@ class virtsailingModel
 			var now = System.getTimer();
 			_legStart = now;
             _currentLeg++;
+            startTimer();
 		}
     }
 
@@ -340,7 +353,97 @@ class virtsailingModel
 		return elapsedTime;
 	}	
 	
+    function getRaceTime() {        
+        var now = Time.now();
+        var raceTime = now.subtract(_legStart);
+        var raceTimeStr = secToStr(raceTime.value());
+        //System.println(raceTimeStr);
+        return raceTimeStr;
+    }
+
 	function toFixed(value, scale) {
         return ((value * scale) + 0.5).toNumber();
+    }
+
+    
+/*
+ * chrono time functions
+*/
+    function fixTimeUp() {
+    	secLeft = ((secLeft / 60) + 1) * 60;
+    	//Sys.println("fixTimeUp" + secLeft / 60 + 1);
+    }
+    
+    function isTimerRunning() {
+    	return (secLeft != null and secLeft < 300);
+    }
+    
+    function fixTimeDown() {
+    	secLeft = (secLeft / 60) * 60;
+    	//Sys.println("fixTimeUpDown" + secLeft / 60);
+    }
+ 
+    function startTimer() {
+    	secTot = 30; // App.getApp().getDefaultTimerCount();
+        secLeft = secTot;
+        
+    	updateTimer();
+        
+        timer = new Timer.Timer();
+        timer.start( method(:callback), 1000, true );
+        
+        //timerRunning = true;
+	}
+
+    function getTimer() {
+        var color = Graphics.COLOR_BLACK;
+        if (secLeft<=5) {
+            color = Graphics.COLOR_RED;
+        }
+        return [secLeft,color];
+    }
+
+    function updateTimer() {
+    	secLeft -= 1;
+    }
+    
+    function callback() {
+    	if(secLeft > 1) {
+    		
+    		if(secLeft == 5) {
+    		    //ring();
+                //System.println("ring 5");
+                // query attention
+                if (Attention has :vibrate) {
+                    var vibe = [new Attention.VibeProfile(  50, 100 )];
+                    Attention.vibrate(vibe);
+                }
+    	    }
+    	    /*
+    	    if((secLeft-1) % 30 == 0){
+    		    ring();
+    		    if((secLeft-1) % 60 == 0){
+    		    	ring();
+    	    	}
+    	    }
+            */
+    		updateTimer();            
+    	}else {
+    		endTimer();
+		}
+        
+        //Ui.requestUpdate();
+    }
+
+    function endTimer() {
+        System.println("endTimer");
+        if (Attention has :vibrate) {
+            var vibe = [new Attention.VibeProfile(  50, 100 )];
+            Attention.vibrate(vibe);
+        }
+    	_legStart = Time.now();    	
+		timer.stop();
+        timer = null;
+        secLeft = null;
     }
 }

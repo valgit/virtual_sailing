@@ -35,4 +35,5 @@
     <string id="virtsailing_unitleg">leg(s)</string>
     <string id="virtsailing_avglegtime">Avg Time per Leg</string>
     <string id="virtsailing_time">s</string> 
+    <string id="virtsailing_legtime">leg time</string>
 </strings>
