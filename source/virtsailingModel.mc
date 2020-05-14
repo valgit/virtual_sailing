@@ -354,9 +354,9 @@ class virtsailingModel
 	}	
 	
     function getRaceTime() {        
-        var now = Time.now();
-        var raceTime = now.subtract(_legStart);
-        var raceTimeStr = secToStr(raceTime.value());
+        var now = System.getTimer(); //Time.now();
+        var raceTime = now - _legStart; //.subtract(_legStart);
+        var raceTimeStr = secToTimeStr(raceTime/1000); // secToStr(raceTime);// .value());
         //System.println(raceTimeStr);
         return raceTimeStr;
     }
@@ -441,7 +441,7 @@ class virtsailingModel
             var vibe = [new Attention.VibeProfile(  50, 100 )];
             Attention.vibrate(vibe);
         }
-    	_legStart = Time.now();    	
+    	_legStart = System.getTimer(); //Time.now();    	
 		timer.stop();
         timer = null;
         secLeft = null;
