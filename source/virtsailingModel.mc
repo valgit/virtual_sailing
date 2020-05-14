@@ -384,7 +384,7 @@ class virtsailingModel
     }
  
     function startTimer() {
-    	secTot = 30; // App.getApp().getDefaultTimerCount();
+    	secTot = 75; // App.getApp().getDefaultTimerCount();
         secLeft = secTot;
         
     	updateTimer();
