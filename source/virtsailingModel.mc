@@ -192,7 +192,11 @@ class virtsailingModel
             */
             
             mSessTotalLegsField.setData(_totalLeg.toLong());
-            mSessAvgTimePerLegField.setData(avgLegTime); // temps moy par manche
+            if (_totalLeg != 0) {
+                var _avg = (avgLegTime / _totalLeg) / (60 * 1000.0);
+                System.println("Avg : " + ((_avg/60)%60 + _avg%60/100.0)  + " mm:ss" );
+                mSessAvgTimePerLegField.setData(_avg); // temps moy par manche
+            }
                            
 	        mSession.save();
 	       
@@ -324,7 +328,7 @@ class virtsailingModel
         avgLegTime += legtime;
         _totalLeg ++;
 
-        mLapLegTimeField.setData( legtime / 1000.0);
+        mLapLegTimeField.setData( legtime / (60 * 1000.0) ); // en minute 
         // addLapd should be call after all (forum info)
         mSession.addLap(); 
     }
