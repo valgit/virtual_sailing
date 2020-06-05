@@ -17,5 +17,10 @@
 		precision="0"
 		dataLabel="@Strings.virtsailing_avglegtime" 
 		unitLabel="@Strings.virtsailing_time"  />
+	<fitField id="4" displayInActivitySummary="true" 
+		sortOrder = "1" 
+		precision="0"
+		dataLabel="@Strings.virtsailing_avglegtime" 
+		unitLabel="@Strings.virtsailing_time"  />
 </fitContributions>
  
