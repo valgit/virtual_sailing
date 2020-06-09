@@ -107,7 +107,7 @@ class virtsailingModel
         mSessAvgTimePerLegStrField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_avglegtime),
             AVG_TIME_PER_LEG_STR_FIELD_ID, 
             FitContributor.DATA_TYPE_STRING,
-            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>6, :units=>Ui.loadResource(Rez.Strings.virtsailing_time)}
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>10, :units=>Ui.loadResource(Rez.Strings.virtsailing_time)}
             );
             
         //System.println("initializeFITsession - out");
@@ -201,11 +201,22 @@ class virtsailingModel
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {
                 var _avg = (avgLegTime / _totalLeg) / (60 * 1000.0);
-                var _avgStr = ((_avg/60)%60 + ":" + _avg%60/100.0);
-                System.println("Avg : " + _avgStr  + " mm:ss" );
+                var _avgL = _avg.toLong();
+
+                var seconds = _avgL % 60;
+		        _avgL /= 60;
+		        var minutes = _avgL % 60;
+		        _avgL /= 60;
+		        var hours = _avgL % 24;
+		
+		        var formattedTime = Lang.format("$1$:$2$", [minutes.format("%1d"), seconds.format("%02d")]);
+
+                //var _avgStr = ((_avgL/60)%60 + ":" + _avgL%60/100.0);
+                //System.println("Avg : " + _avgStr  + " mm:ss" );
+                System.println("Avg : " + formattedTime + " mm:ss" );
                 mSessAvgTimePerLegField.setData(_avg); // temps moy par manche
 
-                mSessAvgTimePerLegStrField.setData(_avgStr);
+                mSessAvgTimePerLegStrField.setData(formattedTime);
             }
                            
 	        mSession.save();
