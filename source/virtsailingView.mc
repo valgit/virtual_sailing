@@ -12,6 +12,7 @@ using Toybox.System;
 
 class virtsailingView extends commonView {
     hidden var mEnds;
+    hidden var timedisplay;
 
     // Initialize the View
     function initialize() {
@@ -25,6 +26,8 @@ class virtsailingView extends commonView {
               
 		 // Load UI resources		
 	    mEnds = Ui.loadResource(Rez.Strings.sailing_leg);
+
+        timedisplay = 20;
         //System.println("view initialize - out ");
     }
 
@@ -49,8 +52,7 @@ class virtsailingView extends commonView {
 		//System.println("onUpdate");
         commonView.onUpdate(dc);
 
-		// drawing info
-
+		// drawing info                
 		if( Toybox has :ActivityRecording ) {
 		        
                 if(mController.isRunning() ) {
@@ -294,6 +296,14 @@ class virtsailingView extends commonView {
             */
     }
 
+    function getCurrentTime() {
+        var timeFormat = "$1$:$2$";
+        var clockTime = System.getClockTime();
+        var hours = clockTime.hour;
+        var minutes = clockTime.min;
+        return hours.format("%02d") + ":" + minutes.format("%02d");
+    }
+
     /*
      * update all the rest info to display
      */
@@ -304,8 +314,12 @@ class virtsailingView extends commonView {
         		Graphics.getFontAscent(Graphics.FONT_NUMBER_MEDIUM) - 5; // add some space
 
         var _resttime = mModel.getRestElapsed();
-        //System.println("virtsailingView: updateRestsInfo : In End Pause since : " + secToTimeStr(_resttime));
-        
+        //System.println("virtsailingView: updateRestsInfo : In End Pause since : " + secToTimeStr(_resttime));                 
+        timedisplay = timedisplay-1;
+        if (timedisplay<0) {
+            timedisplay = 20;
+        }
+
         dc.drawText(
             (_canvas_w / 2), 
             y, 
@@ -314,12 +328,23 @@ class virtsailingView extends commonView {
             Graphics.TEXT_JUSTIFY_CENTER);
 
         y += Graphics.getFontAscent(Graphics.FONT_MEDIUM);
-        dc.drawText(
-            (_canvas_w / 2), 
-            y , 
-            Graphics.FONT_NUMBER_MEDIUM , 
-            secToTimeStr(_resttime), 
-            Graphics.TEXT_JUSTIFY_CENTER);
+        
+        if (timedisplay<=10) {            
+            var timestr = getCurrentTime();
+            dc.drawText(
+                (_canvas_w / 2), 
+                y , 
+                Graphics.FONT_NUMBER_MEDIUM , 
+                timestr, 
+                Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            dc.drawText(
+                (_canvas_w / 2), 
+                y , 
+                Graphics.FONT_NUMBER_MEDIUM , 
+                secToTimeStr(_resttime), 
+                Graphics.TEXT_JUSTIFY_CENTER);
+        }       
 
         y += Graphics.getFontAscent(Graphics.FONT_NUMBER_MEDIUM);
         

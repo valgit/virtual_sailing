@@ -200,7 +200,7 @@ class virtsailingModel
             
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {
-                var _avg = (avgLegTime / _totalLeg) / (60 * 1000.0);
+                var _avg = (avgLegTime / _totalLeg) / 1000.0;
                 var _avgL = _avg.toLong();
 
                 var seconds = _avgL % 60;
@@ -209,11 +209,11 @@ class virtsailingModel
 		        _avgL /= 60;
 		        var hours = _avgL % 24;
 		
-		        var formattedTime = Lang.format("$1$:$2$", [minutes.format("%1d"), seconds.format("%02d")]);
+		        var formattedTime = Lang.format("$1$:$2$:$3$", [hours.format("%1d"), minutes.format("%1d"), seconds.format("%02d")]);
 
                 //var _avgStr = ((_avgL/60)%60 + ":" + _avgL%60/100.0);
                 //System.println("Avg : " + _avgStr  + " mm:ss" );
-                System.println("Avg : " + formattedTime + " mm:ss" );
+                System.println("Avg : " + formattedTime + " hh:mm:ss" );
                 mSessAvgTimePerLegField.setData(_avg); // temps moy par manche
 
                 mSessAvgTimePerLegStrField.setData(formattedTime);
