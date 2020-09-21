@@ -3,3 +3,7 @@
     <menu-item id="save" label="@Strings.menu_label_2"/>
     <menu-item id="discard" label="@Strings.menu_label_3"/>
 </menu>
+<menu id="PlaceMenu">
+    <menu-item id="wind" label="@Strings.menu_wind" />
+    <menu-item id="boat" label="@Strings.menu_boat"/>    
+</menu>

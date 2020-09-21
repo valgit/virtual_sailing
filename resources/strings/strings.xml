@@ -36,4 +36,7 @@
     <string id="virtsailing_avglegtime">Avg Time per Leg</string>
     <string id="virtsailing_time">n</string> 
     <string id="virtsailing_legtime">leg time</string>
+
+    <string id="menu_wind">wind</string>
+    <string id="menu_boat">boat/string>    
 </strings>

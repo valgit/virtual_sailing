@@ -1,0 +1,63 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build connect IQ",
+            "type": "process",
+            "windows": {
+               "command": "C:\\Program Files\\Java\\jdk1.8.0_221\\bin\\java.exe",
+            },
+            "args": [
+                "-Dfile.encoding=UTF-8",
+                "-Dapple.awt.UIElement=true",
+                "-jar",
+                "C:\\data\\Applications\\sdks\\connectiq-sdk-win-3.1.6-2019-10-23-2de4665c6\\bin\\monkeybrains.jar",
+                "-o",
+                "${workspaceFolder}\\bin\\${workspaceFolderBasename}.prg",
+                "-w",
+                "-y",
+                "C:\\data\\workspace\\garmin\\developer_key.der",
+                "-d",
+                "vivoactive3",
+                "-s",
+                "3.0.0",
+                "-r",
+                "-f",
+                "${workspaceFolder}\\monkey.jungle"
+            ],
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "silent"
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher":  {
+                "owner": "mc",
+                "fileLocation": [
+                    "absolute"
+                ],
+                "pattern": {
+                    "regexp": "^(.*): (.*): (.*):([0-9]*),([0-9]*): (.*)$",
+                    "file": 3,
+                    "line": 4,
+                    "column": 5,
+                    "severity": 1,
+                    "message": 6
+                }
+            }
+        },
+        {
+            "label": "Simulate Garmin",
+            "type": "shell",
+            "command": "simulate.bat",
+            "group": "test",
+            "args": [
+                "${workspaceFolder}\\bin\\${workspaceFolderBasename}.prg",
+                "vivoactive3"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
