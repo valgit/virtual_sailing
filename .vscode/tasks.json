@@ -9,23 +9,29 @@
             "windows": {
                "command": "C:\\Program Files\\Java\\jdk1.8.0_221\\bin\\java.exe",
             },
+            "osx": {
+                "command": "/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/bin/java",
+            },
+            "linux": {
+                "command": "/usr/bin/java", 
+            },
             "args": [
                 "-Dfile.encoding=UTF-8",
                 "-Dapple.awt.UIElement=true",
                 "-jar",
-                "C:\\data\\Applications\\sdks\\connectiq-sdk-win-3.1.6-2019-10-23-2de4665c6\\bin\\monkeybrains.jar",
+		        "/home/val/Documents/garmin/sdks/sdk_3.1.9/bin/monkeybrains.jar",
                 "-o",
-                "${workspaceFolder}\\bin\\${workspaceFolderBasename}.prg",
+                "${workspaceFolder}/bin/${workspaceFolderBasename}.prg",
                 "-w",
                 "-y",
-                "C:\\data\\workspace\\garmin\\developer_key.der",
+		        "/home/val/Documents/garmin/eveloper_key.der",
                 "-d",
                 "vivoactive3",
                 "-s",
                 "3.0.0",
                 "-r",
                 "-f",
-                "${workspaceFolder}\\monkey.jungle"
+                "${workspaceFolder}/monkey.jungle"
             ],
             "group": "build",
             "presentation": {

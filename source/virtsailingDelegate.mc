@@ -50,8 +50,8 @@ class virtsailingDelegate extends WatchUi.BehaviorDelegate {
    function onMenu() {
         System.println("dlg:onMenu");
         
-        //WatchUi.pushView(new Rez.Menus.SettingsMenu(), new virtsailingSettingsDelegate(), WatchUi.SLIDE_UP);
-        return false;  // allow InputDelegate function to be called
+        WatchUi.pushView(new Rez.Menus.PlaceMenu(), new virtsailingPlaceDelegate(), WatchUi.SLIDE_UP);
+        return true; // false;  // allow InputDelegate function to be called
     }
 
     // Handle the back action
