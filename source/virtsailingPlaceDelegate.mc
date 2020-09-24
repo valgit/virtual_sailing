@@ -19,16 +19,15 @@ class virtsailingPlaceDelegate extends WatchUi.MenuInputDelegate {
 
     // Handle the menu input
     function onMenuItem(item) {
-        if (item == :boat) {
-            //mController.start();
-            System.println("set boat");
+        if (item == :boat) {            
+            //System.println("set boat");
+            WatchUi.pushView(new PickerBoat(),
+                new PickerBoatDelegate(),
+                WatchUi.SLIDE_IMMEDIATE);
             return true;
         } else if (item == :wind) {
             //mController.save();
             System.println("set wind");
-            return true;
-        } else {
-            System.println("default ?");
             return true;
         }
         return false;

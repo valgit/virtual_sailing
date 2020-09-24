@@ -111,14 +111,3 @@ function getNumber(name, def, min, max) {
     return pref;
 }
 
-//! Return boolean of GPS setting
-function getGpsUsage() {
-    var value = getBoolean("useGps", false);
-    return value;
-}
-
-//! Return base target distance 
-function getTargetDist() {
-    var value = getNumber("target_dist", 25, 5, 100);    
-    return value;
-}

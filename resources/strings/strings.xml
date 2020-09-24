@@ -37,6 +37,11 @@
     <string id="virtsailing_time">n</string> 
     <string id="virtsailing_legtime">leg time</string>
 
+    <string id="virtsailing_boattype">boat</string>
+    <string id="virtsailing_boatunit">s</string>
+    <string id="virtsailing_windforce">wind</string>
+    <string id="virtsailing_windunit">knt/s</string>
+
     <string id="menu_wind">wind</string>
     <string id="menu_boat">boat</string>    
 </strings>

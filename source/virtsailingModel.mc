@@ -28,11 +28,15 @@ class virtsailingModel
     hidden const AVG_TIME_PER_LEG_FIELD_ID = 2;   //
     hidden const LAP_LEG_TIME_FIELD_ID = 3;
     hidden const AVG_TIME_PER_LEG_STR_FIELD_ID = 4;   //
+    hidden const BOAT_TYPE_STR_FIELD_ID = 5;   // 
+    hidden const WIND_PER_LEG_FIELD_ID = 6;   // wind force
 
     hidden var mSessTotalLegsField = null; // nombre de manche
     hidden var mSessAvgTimePerLegField = null; // temps moy / manche
     hidden var mSessAvgTimePerLegStrField = null;
     hidden var mLapLegTimeField = null;
+    hidden var mSessBoatTypeStrField = null; // boat
+    hidden var mSessWindPerLegField = null; // wind
 
     // Summarized and exposed statistics
     var elapsedTime;
@@ -109,6 +113,17 @@ class virtsailingModel
             FitContributor.DATA_TYPE_STRING,
             {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>10, :units=>Ui.loadResource(Rez.Strings.virtsailing_time)}
             );
+        mSessBoatTypeStrField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_boattype),
+            BOAT_TYPE_STR_FIELD_ID, 
+            FitContributor.DATA_TYPE_STRING,
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>10, :units=>Ui.loadResource(Rez.Strings.virtsailing_boatunit)}
+            );
+        mSessWindPerLegField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_windforce),
+            WIND_PER_LEG_FIELD_ID, 
+            FitContributor.DATA_TYPE_FLOAT, 
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :units=>Ui.loadResource(Rez.Strings.virtsailing_windunit)}
+            );
+            
             
         //System.println("initializeFITsession - out");
     }
@@ -197,7 +212,10 @@ class virtsailingModel
                 ((avgEnds/60)%60+avgEnds%60/100.0)  + " mm:ss" 
                 );
             */
-            
+            var mBoatType = Application.getApp().getProperty("boat");
+            //System.println("boat type : " + mBoatType);
+            mSessBoatTypeStrField.setData(mBoatType);
+
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {
                 var _avg = (avgLegTime / _totalLeg) / 1000.0;

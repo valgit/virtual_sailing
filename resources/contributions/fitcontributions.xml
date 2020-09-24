@@ -22,5 +22,15 @@
 		precision="0"
 		dataLabel="@Strings.virtsailing_avglegtime" 
 		unitLabel="@Strings.virtsailing_time"  />
+	<fitField id="5" displayInActivitySummary="true" 
+		sortOrder = "1" 
+		precision="0"
+		dataLabel="@Strings.virtsailing_boattype" 
+		unitLabel="@Strings.virtsailing_boatunit"  />
+	<fitField id="6" displayInActivitySummary="true" 
+		sortOrder = "1" 
+		precision="0"
+		dataLabel="@Strings.virtsailing_windforce" 
+		unitLabel="@Strings.virtsailing_windunit"  />
 </fitContributions>
  
