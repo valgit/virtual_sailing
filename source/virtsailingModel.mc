@@ -213,8 +213,12 @@ class virtsailingModel
                 );
             */
             var mBoatType = Application.getApp().getProperty("boat");
-            //System.println("boat type : " + mBoatType);
-            mSessBoatTypeStrField.setData(mBoatType);
+            if (mBoatType != null) {
+                //System.println("boat type : " + mBoatType);
+                mSessBoatTypeStrField.setData(mBoatType);
+            } else {
+                mSessBoatTypeStrField.setData("all");
+            }
 
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {

@@ -25,8 +25,7 @@
 	<fitField id="5" displayInActivitySummary="true" 
 		sortOrder = "1" 
 		precision="0"
-		dataLabel="@Strings.virtsailing_boattype" 
-		unitLabel="@Strings.virtsailing_boatunit"  />
+		dataLabel="@Strings.virtsailing_boattype"  />
 	<fitField id="6" displayInActivitySummary="true" 
 		sortOrder = "1" 
 		precision="0"

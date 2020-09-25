@@ -34,11 +34,11 @@
     <string id="virtsailing_totallegs">Total legs</string>
     <string id="virtsailing_unitleg">leg(s)</string>
     <string id="virtsailing_avglegtime">Avg Time per Leg</string>
-    <string id="virtsailing_time">n</string> 
+    <string id="virtsailing_time">s</string> 
     <string id="virtsailing_legtime">leg time</string>
 
     <string id="virtsailing_boattype">boat</string>
-    <string id="virtsailing_boatunit">s</string>
+    <string id="virtsailing_boatunit">"</string>
     <string id="virtsailing_windforce">wind</string>
     <string id="virtsailing_windunit">knt/s</string>
 
