@@ -16,6 +16,8 @@ class PickerBoat extends WatchUi.Picker {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         Picker.onUpdate(dc);
+
+        // TODO : draw background
     }
 }
 

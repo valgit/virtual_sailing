@@ -320,3 +320,10 @@ supportsRecording = Toybox has :ActivityRecording;
                 :nativeNum=>112,
                 :units => Ui.loadResource(Rez.Strings.unit_Duration)
                 }); 
+
+
+using Toybox.Application.Properties;
+
+function f() {
+    var value = Properties.getValue(key);
+}

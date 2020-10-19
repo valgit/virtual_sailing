@@ -116,7 +116,7 @@ class virtsailingModel
         mSessBoatTypeStrField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_boattype),
             BOAT_TYPE_STR_FIELD_ID, 
             FitContributor.DATA_TYPE_STRING,
-            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>10, :units=>Ui.loadResource(Rez.Strings.virtsailing_boatunit)}
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>20, :units=>Ui.loadResource(Rez.Strings.virtsailing_boatunit)}
             );
         mSessWindPerLegField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_windforce),
             WIND_PER_LEG_FIELD_ID, 
@@ -219,6 +219,15 @@ class virtsailingModel
             } else {
                 mSessBoatTypeStrField.setData("all");
             }
+
+            var mWindSpd = Application.getApp().getProperty("wind");
+            if (mWindSpd != null) {
+                //System.println("boat type : " + mBoatType);
+                mSessWindPerLegField.setData(mWindSpd);
+            } else {
+                mSessWindPerLegField.setData(0);
+            }
+
 
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {
