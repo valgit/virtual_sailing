@@ -59,6 +59,13 @@ class virtsailingModel
 	var secLeft;
     //var raceStartTime;
 	
+	var mHeartbeatIntervalsSensor = null;
+	
+	private var mNoHrvSeconds;
+	private var mHrvReadySuccessCount;
+	private const MinSecondsNoHrvDetected = 3;
+	private const MinHrvReadySuccessCount = 2;
+	
     /*
      * fit contributor for Record session 
      */
@@ -170,6 +177,13 @@ class virtsailingModel
                 initializeFITLap();
                 //mSession.addLap();
 
+				// test HRV ?
+				mNoHrvSeconds = MinSecondsNoHrvDetected;
+				mHrvReadySuccessCount = 0;
+				mHeartbeatIntervalsSensor = new HrvAlgorithms.HeartbeatIntervalsSensor();
+				// for test
+				mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onIsHrvReadyListener));	
+				mHeartbeatIntervalsSensor.start();
 
 		   }
     	//System.println("model init - out");
@@ -339,6 +353,27 @@ class virtsailingModel
 	    //var steps = info.steps;
     }
 
+	
+	// test HRV
+	function onIsHrvReadyListener(heartBeatIntervals) {
+	if (heartBeatIntervals.size() == 0) {
+			mNoHrvSeconds++;
+		}
+		else {
+			mNoHrvSeconds = 0;
+		}
+		if (mNoHrvSeconds < MinSecondsNoHrvDetected) {
+			mHrvReadySuccessCount++;
+		}
+		else {
+			mHrvReadySuccessCount = 0;
+		}
+		if (mHrvReadySuccessCount >= MinHrvReadySuccessCount) {
+			//me.autoStartTestHrvActivity();
+			System.println("HRV ready");
+		}
+	}
+	
     // Return the total elapsed recording time
     function getTimeElapsed() {
         //return mSeconds;
