@@ -1,0 +1,17 @@
+<resources>    
+    <fitContributions>
+		<fitField id="50" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="0" precision="0" dataLabel="@Strings.minHrField" unitLabel="@Strings.hrUnits" />
+		<fitField id="56" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder="1" precision="0" dataLabel="@Strings.hrvSuccessiveField" unitLabel="@Strings.hrvFieldUnits" chartTitle="@Strings.hrvSuccessiveField" fillColor="0000FF"  />
+		<fitField id="57" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="2" precision="2" dataLabel="@Strings.hrvRmssdFieldLabel" unitLabel="@Strings.hrvFieldUnits" />
+		<fitField id="58" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder="3" precision="0" dataLabel="@Strings.hrvRrIntervalsField" unitLabel="@Strings.hrvFieldUnits" chartTitle="@Strings.hrvRrIntervalsField" fillColor="FFA500"  />
+		<fitField id="51" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="4" precision="2" dataLabel="@Strings.hrvSdrrFieldLabel" unitLabel="@Strings.hrvFieldUnits" />
+		<fitField id="59" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="5" precision="2" dataLabel="@Strings.hrvSdrrFirst5MinFieldLabel" unitLabel="@Strings.hrvFieldUnits" />
+		<fitField id="60" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="6" precision="2" dataLabel="@Strings.hrvSdrrLast5MinFieldLabel" unitLabel="@Strings.hrvFieldUnits" />
+		<fitField id="61" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="7" precision="2" dataLabel="@Strings.hrvPnn50FieldLabel" unitLabel="@Strings.percentUnits" />
+		<fitField id="62" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="8" precision="2" dataLabel="@Strings.hrvPnn20FieldLabel" unitLabel="@Strings.percentUnits" />
+		<fitField id="63" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder="9" precision="2" dataLabel="@Strings.hrvRmssd30SecField" unitLabel="@Strings.hrvFieldUnits" chartTitle="@Strings.hrvRmssd30SecField" fillColor="993366"  />
+		<fitField id="65" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder="10" precision="2" dataLabel="@Strings.hrPeaksWindow10Field" unitLabel="@Strings.hrUnits" chartTitle="@Strings.hrPeaksWindow10Field" fillColor="6666FF"  />
+		<fitField id="66" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder="11" precision="0" dataLabel="@Strings.hrFromHeartbeatField" unitLabel="@Strings.hrUnits" chartTitle="@Strings.hrFromHeartbeatField" fillColor="FF0000"  />
+		<fitField id="67" displayInChart="false" displayInActivityLaps="true" displayInActivitySummary="true" sortOrder="12" precision="2" dataLabel="@Strings.stressField" unitLabel="@Strings.stressUnits" />
+	</fitContributions>
+</resources>

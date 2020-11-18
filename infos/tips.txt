@@ -327,3 +327,13 @@ using Toybox.Application.Properties;
 function f() {
     var value = Properties.getValue(key);
 }
+
+
+
+BUILD: C:\Program Files\Java\jre1.8.0_261\bin\java 
+    -Dfile.encoding=UTF-8 -Dapple.awt.UIElement=true 
+    -jar C:\Utilisateurs\fr20033\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-3.2.1-2020-08-20-56ff593b7\bin\monkeybrains.jar 
+    -o C:\data\workspace\garmin\virtual_sailing\bin\virtual_sailing.prg -w 
+    -y C:\data\workspace\garmin\developer_key.der
+    -f C:\data\workspace\garmin\virtual_sailing\barrels.jungle;C:\data\workspace\garmin\virtual_sailing\monkey.jungle 
+    
