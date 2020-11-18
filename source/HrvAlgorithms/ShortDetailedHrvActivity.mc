@@ -9,7 +9,7 @@ module HrvAlgorithms {
 		private var mHrvMonitor;
 		
 		
-		protected function onBeforeStart(fitSession) {		
+		function onBeforeStart(fitSession) {		
 			me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onOneSecBeatToBeatIntervals));
 			me.mHrvMonitor = new HrvMonitorDetailed(fitSession, false);
 		}
@@ -18,18 +18,18 @@ module HrvAlgorithms {
 			me.mHrvMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);
 		}
 		
-		protected function onBeforeStop() {
+		 function onBeforeStop() {
 	    	me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(null);
 		}
 		
 		private var mHrvSuccessive;
 		
-		protected function onRefreshHrActivityStats(activityInfo, minHr) {	
+		 function onRefreshHrActivityStats(activityInfo, minHr) {	
     		me.mHrvSuccessive = me.mHrvMonitor.calculateHrvSuccessive();		
     		me.onRefreshHrvActivityStats(activityInfo, minHr, me.mHrvSuccessive);
 		}
 		
-		protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvSuccessive) {
+		function onRefreshHrvActivityStats(activityInfo, minHr, hrvSuccessive) {
 		}
 		
 		function calculateSummaryFields() {	

@@ -20,8 +20,8 @@ module HrvAlgorithms {
 		private var mHrvSuccessiveDataField;
 		private var mHrvRmssdDataField;
 				
-		private static const HrvSuccessiveFieldId = 6;
-		private static const HrvRmssdFieldId = 7;	
+		private static const HrvSuccessiveFieldId = 56;
+		private static const HrvRmssdFieldId = 57;	
 				
 		private static function createHrvSuccessiveDataField(activitySession) {
 			return activitySession.createField(
