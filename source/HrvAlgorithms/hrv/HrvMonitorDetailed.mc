@@ -47,7 +47,7 @@ module HrvAlgorithms {
 		private static const HrvPnn50FieldId = 61;
 		private static const HrvPnn20FieldId = 62;
 		private static const HrvRmssd30SecFieldId = 63;
-		private static const HrFromHeartbeatField = 66;
+		private static const HrFromHeartbeatFieldId = 66;
 					
 		private static function createHrvSdrrFirst5MinDataField(activitySession, isSessionTimeLongerThan5min) {
 			var fieldId;
@@ -95,7 +95,7 @@ module HrvAlgorithms {
 		private static function createHrFromHeartbeatDataField(activitySession) {
 			return activitySession.createField(
 	            "hrv_hr",
-	            HrvMonitorDetailed.HrFromHeartbeatField,
+	            HrvMonitorDetailed.HrFromHeartbeatFieldId,
 	            FitContributor.DATA_TYPE_UINT16,
 	            {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"bpm"}
 	        );
