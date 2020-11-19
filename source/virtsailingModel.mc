@@ -205,7 +205,7 @@ class virtsailingModel {
 				mHeartbeatIntervalsSensor = new HrvAlgorithms.HeartbeatIntervalsSensor();
 				mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onIsHrvReadyListener));
 				mHeartbeatIntervalsSensor.start();
-								mNoHrvSeconds = MinSecondsNoHrvDetected;
+				mNoHrvSeconds = MinSecondsNoHrvDetected;
 				mHrvReadySuccessCount = 0;
 				
 				
@@ -222,7 +222,7 @@ class virtsailingModel {
     // Begin sensor processing
     function start() {
     	//System.println("model - start");    
-    	mHrvData.onBeforeStart(mSession);
+    	//maybe not ? mHrvData.onBeforeStart(mSession);
     	
         // Start recording
         mSession.start();
@@ -239,6 +239,7 @@ class virtsailingModel {
         
         // Stop the FIT recording
         if ((mSession != null) && mSession.isRecording()) {  
+            mHrvData.stop();
         	mSession.stop();
         }
     }
@@ -356,6 +357,8 @@ class virtsailingModel {
             //totalEnds = mCurrentEnds;
             
             var activitySummary = mHrvData.calculateSummaryFields();
+            System.println("rmssd " + activitySummary.hrvSummary.rmssd + " / Sdrr " + activitySummary.hrvSummary.first5MinSdrr);            			
+
 		}
 	}
 	

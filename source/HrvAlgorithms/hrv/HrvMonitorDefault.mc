@@ -5,7 +5,7 @@ using Toybox.Application as App;
 module HrvAlgorithms {
 	class HrvMonitorDefault {
 		function initialize(activitySession) {					
-			//check : me.mHrvSuccessiveDataField = HrvMonitorDefault.createHrvSuccessiveDataField(activitySession);
+			me.mHrvSuccessiveDataField = HrvMonitorDefault.createHrvSuccessiveDataField(activitySession);
 			me.mHrvRmssdDataField = HrvMonitorDefault.createHrvRmssdDataField(activitySession);
 						
 			me.mHrvRmssd = new HrvRmssd();	
