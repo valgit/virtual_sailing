@@ -305,6 +305,7 @@ class virtsailingModel {
     // Discard the current session
     function discard() {
     	if (mSession != null) {
+            mHrvData.discard();
 	        mSession.discard();
 	        mSession = null;
         }

@@ -143,6 +143,10 @@ module HrvAlgorithms {
 			me.mHrvPnn20.addBeatToBeatInterval(beatToBeatInterval);				
 		}			
 					
+		public function getPnn50() {
+			return me.mHrvPnn50;
+		}
+
 		public function calculateHrvSummary() {		
 			var hrvSummary = HrvMonitorDefault.calculateHrvSummary();	
 	

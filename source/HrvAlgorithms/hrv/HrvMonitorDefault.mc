@@ -54,7 +54,11 @@ module HrvAlgorithms {
 			me.mHrvSuccessive.addBeatToBeatInterval(beatToBeatInterval);	
 			me.mHrvRmssd.addBeatToBeatInterval(beatToBeatInterval);
 		}			
-					
+
+		public function getRmssd() {
+			return me.mHrvRmssd.calculate();
+		}
+			
 		public function calculateHrvSuccessive() {
 			var hrvSuccessive = me.mHrvSuccessive.calculate();
 			if (hrvSuccessive != null) {
