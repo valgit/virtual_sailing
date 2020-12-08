@@ -1,7 +1,7 @@
 <resources>
 
 <properties>
-	<property id="appVersion" type="string">1.2.7</property>	
+	<property id="appVersion" type="string">1.0.6</property>	
 </properties>
 
 <settings>
