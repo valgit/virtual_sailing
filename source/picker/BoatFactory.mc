@@ -13,7 +13,7 @@ class BoatFactory extends WatchUi.PickerFactory {
         PickerFactory.initialize();
         
         // TODO update boat list
-        mBoats = ["Formule 18", "Laser", "Star", "49er", "Nacra 17", "J/70", "F50", "Offshore Racer", "AC75"];
+        mBoats = ["Formule 18", "Laser", "Star", "49er", "Nacra 17", "J/70", "F50", "Offshore Racer", "AC75","FareEast28"];
 
         if(options != null) {
             mFont = options.get(:font);
