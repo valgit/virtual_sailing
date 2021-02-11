@@ -12,9 +12,9 @@ using Toybox.FitContributor;
 using Toybox.ActivityRecording;
 
 using Toybox.WatchUi as Ui;
+using HrvAlgorithms;
 
-class virtsailingModel
-{
+class virtsailingModel {
     // Timer for handling the accelerometer    
     
     // Primary stats
@@ -58,6 +58,13 @@ class virtsailingModel
     var secTot;
 	var secLeft;
     //var raceStartTime;
+	
+	var mHeartbeatIntervalsSensor = null;
+	
+	private var mNoHrvSeconds;
+	private var mHrvReadySuccessCount;
+	private const MinSecondsNoHrvDetected = 3;
+	private const MinHrvReadySuccessCount = 2;
 	
     /*
      * fit contributor for Record session 
@@ -128,7 +135,26 @@ class virtsailingModel
         //System.println("initializeFITsession - out");
     }
 
-    
+    /* test HRV */
+    //protected var mHeartbeatIntervalsSensor;	
+    private var mHrvData;
+    /*	
+	private var mHrvMonitor;
+	private const MinHrFieldId = 7;
+	private var mMinHrField;
+	private var mMinHr;
+		
+    private function createMinHrDataField() {
+			mMinHrField = mSession.createField(
+	            "min_hr",
+	            MinHrFieldId,
+	            FitContributor.DATA_TYPE_UINT16,
+	            {:mesgType=>FitContributor.MESG_TYPE_SESSION, :units=>"bpm"}
+	        );
+			
+	        mMinHrField.setData(0);
+	}
+    */
 
     // Initialize sensor readings
     function initialize() {    
@@ -170,6 +196,24 @@ class virtsailingModel
                 initializeFITLap();
                 //mSession.addLap();
 
+				// test HRV ?
+                /*
+                createMinHrDataField();
+                				   
+				*/
+
+				mHeartbeatIntervalsSensor = new HrvAlgorithms.HeartbeatIntervalsSensor();
+				mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onIsHrvReadyListener));
+				mHeartbeatIntervalsSensor.start();
+				mNoHrvSeconds = MinSecondsNoHrvDetected;
+				mHrvReadySuccessCount = 0;
+				
+				
+				mHrvData = new HrvAlgorithms.ShortDetailedHrvActivity(mSession, mHeartbeatIntervalsSensor);
+
+				//HrActivity.initialize(mSession);		
+   				
+   	
 
 		   }
     	//System.println("model init - out");
@@ -177,8 +221,9 @@ class virtsailingModel
 
     // Begin sensor processing
     function start() {
-    	//System.println("model - start");
-  
+    	//System.println("model - start");    
+    	//maybe not ? mHrvData.onBeforeStart(mSession);
+    	
         // Start recording
         mSession.start();
   
@@ -194,6 +239,7 @@ class virtsailingModel
         
         // Stop the FIT recording
         if ((mSession != null) && mSession.isRecording()) {  
+            mHrvData.stop();
         	mSession.stop();
         }
     }
@@ -259,6 +305,7 @@ class virtsailingModel
     // Discard the current session
     function discard() {
     	if (mSession != null) {
+            mHrvData.discard();
 	        mSession.discard();
 	        mSession = null;
         }
@@ -309,6 +356,10 @@ class virtsailingModel
             // add stats specific for  activity ?
             //totalArrow = mCurrentArrow;
             //totalEnds = mCurrentEnds;
+            
+            var activitySummary = mHrvData.calculateSummaryFields();
+            System.println("rmssd " + activitySummary.hrvSummary.rmssd + " / Sdrr " + activitySummary.hrvSummary.first5MinSdrr);            			
+
 		}
 	}
 	
@@ -339,6 +390,28 @@ class virtsailingModel
 	    //var steps = info.steps;
     }
 
+	
+	// test HRV
+	function onIsHrvReadyListener(heartBeatIntervals) {
+	if (heartBeatIntervals.size() == 0) {
+			mNoHrvSeconds++;
+		}
+		else {
+			mNoHrvSeconds = 0;
+		}
+		if (mNoHrvSeconds < MinSecondsNoHrvDetected) {
+			mHrvReadySuccessCount++;
+		}
+		else {
+			mHrvReadySuccessCount = 0;
+		}
+		if (mHrvReadySuccessCount >= MinHrvReadySuccessCount) {
+			//me.autoStartTestHrvActivity();
+			System.println("HRV ready");
+			//TODO : mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(null);
+		}
+	}
+	
     // Return the total elapsed recording time
     function getTimeElapsed() {
         //return mSeconds;

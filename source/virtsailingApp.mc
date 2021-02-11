@@ -28,7 +28,7 @@ class virtsailingApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() {
 		//System.println("app view");
-        //return [ new sailingView(), new sailingDelegate() ];
+        //return [ new sailingView(), new sailingDelegate() ];       
         
         var delegate = new virtsailingDelegate();
         return [ new virtsailingView(), delegate ];                      
