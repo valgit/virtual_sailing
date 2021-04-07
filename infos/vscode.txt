@@ -1,0 +1,12 @@
+ctrl-shift P opens the command palette 
+
+"Run the Connect IQ: Verify Installation command to ensure the development environment is correctly setup
+
+Run VS Code commands using the command palette:
+
+- F12
+
+- CTRL-SHIFT-P (Windows)
+
+- CMD-SHIFT-P (Mac)
+
