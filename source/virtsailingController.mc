@@ -15,7 +15,7 @@ using Toybox.System;
 // recording
 class virtsailingController
 {
-    var mTimer;
+    //var mTimer;
     var mModel;
     var mRunning;
     var _virtsailingEndView;
@@ -25,7 +25,7 @@ class virtsailingController
     function initialize() {
 		//System.println("ctrl init");
         // Allocate a 1Hz timer               
-        mTimer = new Timer.Timer();        
+        //mTimer = new Timer.Timer();        
         
         // Get the model from the application
         mModel = Application.getApp().model;
@@ -150,17 +150,18 @@ class virtsailingController
 	// handle UI interraction ?
 	 function onShow() {		
 		// Allocate a 1Hz timer               
-        mTimer = new Timer.Timer();     
-        mTimer.start(method(:onTimer), 1000, true);
+        //mTimer = new Timer.Timer();     
+        //mTimer.start(method(:onTimer), 1000, true);
     }
     
     function onHide() {
         //System.println("onHide");
-        mTimer.stop();
-        mTimer = null;		    
+        //mTimer.stop();
+        //mTimer = null;		    
     }
     
-      // Handler for the timer callback
+    // Handler for the timer callback
+    /*
     function onTimer() {
     	// for testing
     	//mModel.generateTest();
@@ -168,6 +169,7 @@ class virtsailingController
     	//mModel.updateTimer();
         WatchUi.requestUpdate();
     }
+    */
   	
     function onSelect() {
     
