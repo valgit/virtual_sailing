@@ -2,5 +2,6 @@
     <bitmap id="LauncherIcon" filename="sailing40x40.png" />
     <bitmap id="HeartIcon" filename="Heart20x20.png" />
     <bitmap id="bticon" filename="Bluetooth32.png" />
-    <bitmap id="archerIcon" filename="sailing.png" />
+    <bitmap id="sailIcon" filename="sailing.png" />
+    <bitmap id="esfIcon" filename="esailing.png" />
 </drawables>

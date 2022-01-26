@@ -75,7 +75,7 @@ class virtsailingView extends commonView {
                         );
                         
                     // draw logo
-                    var _btIcon = Ui.loadResource(Rez.Drawables.archerIcon);
+                    var _btIcon = Ui.loadResource(Rez.Drawables.esfIcon);
                     dc.drawBitmap( (0.5 * _canvas_w ) - 32 , _canvas_h/2 - 100 ,_btIcon); // 25+64+space
                     _btIcon = null;
                     /* display some status before starting */                    

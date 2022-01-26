@@ -28,6 +28,9 @@ class virtsailingPlaceDelegate extends WatchUi.MenuInputDelegate {
         } else if (item == :wind) {
             //mController.save();
             System.println("set wind");
+            WatchUi.pushView(new PickerWind(),
+                new PickerWindDelegate(),
+                WatchUi.SLIDE_IMMEDIATE);
             return true;
         }
         return false;

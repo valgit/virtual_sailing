@@ -2,10 +2,10 @@
 app Uuid 
 
 Release : 
-ac32ddc2935e42beb372d364f909cccf
+056a85d90aac4fedb2d7d26a20d2413b
 
 Beta :
-e229f45a078242d0a4d363d50edceed3
+0321f342bf554773b94b81b7af1f9264
 
 
 
@@ -320,3 +320,20 @@ supportsRecording = Toybox has :ActivityRecording;
                 :nativeNum=>112,
                 :units => Ui.loadResource(Rez.Strings.unit_Duration)
                 }); 
+
+
+using Toybox.Application.Properties;
+
+function f() {
+    var value = Properties.getValue(key);
+}
+
+
+
+BUILD: C:\Program Files\Java\jre1.8.0_261\bin\java 
+    -Dfile.encoding=UTF-8 -Dapple.awt.UIElement=true 
+    -jar C:\Utilisateurs\fr20033\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-3.2.1-2020-08-20-56ff593b7\bin\monkeybrains.jar 
+    -o C:\data\workspace\garmin\virtual_sailing\bin\virtual_sailing.prg -w 
+    -y C:\data\workspace\garmin\developer_key.der
+    -f C:\data\workspace\garmin\virtual_sailing\barrels.jungle;C:\data\workspace\garmin\virtual_sailing\monkey.jungle 
+    

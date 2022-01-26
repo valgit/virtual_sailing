@@ -86,4 +86,5 @@ properties.mk
 
 # sublime
 *.sublime-workspace
+.travis.yml
 

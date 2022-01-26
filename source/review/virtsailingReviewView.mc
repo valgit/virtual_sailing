@@ -103,7 +103,7 @@ class virtsailingReviewView extends Ui.View {
             Graphics.TEXT_JUSTIFY_CENTER);
 
         // time 
-        var _btIcon = Ui.loadResource(Rez.Drawables.archerIcon);
+        var _btIcon = Ui.loadResource(Rez.Drawables.sailIcon);
         dc.drawBitmap( (0.5 * _canvas_w ) + 15 , _canvas_h/2 - 30 ,_btIcon);
         _btIcon = null;
 

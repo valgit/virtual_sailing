@@ -13,8 +13,7 @@ using Toybox.ActivityRecording;
 
 using Toybox.WatchUi as Ui;
 
-class virtsailingModel
-{
+class virtsailingModel {
     // Timer for handling the accelerometer    
     
     // Primary stats
@@ -58,7 +57,7 @@ class virtsailingModel
     var secTot;
 	var secLeft;
     //var raceStartTime;
-	
+		
     /*
      * fit contributor for Record session 
      */
@@ -116,7 +115,7 @@ class virtsailingModel
         mSessBoatTypeStrField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_boattype),
             BOAT_TYPE_STR_FIELD_ID, 
             FitContributor.DATA_TYPE_STRING,
-            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>10, :units=>Ui.loadResource(Rez.Strings.virtsailing_boatunit)}
+            {:mesgType => FitContributor.MESG_TYPE_SESSION, :count=>20, :units=>Ui.loadResource(Rez.Strings.virtsailing_boatunit)}
             );
         mSessWindPerLegField = mSession.createField(Ui.loadResource(Rez.Strings.virtsailing_windforce),
             WIND_PER_LEG_FIELD_ID, 
@@ -128,7 +127,26 @@ class virtsailingModel
         //System.println("initializeFITsession - out");
     }
 
-    
+    /* test HRV */
+    //protected var mHeartbeatIntervalsSensor;	
+    private var mHrvData;
+    /*	
+	private var mHrvMonitor;
+	private const MinHrFieldId = 7;
+	private var mMinHrField;
+	private var mMinHr;
+		
+    private function createMinHrDataField() {
+			mMinHrField = mSession.createField(
+	            "min_hr",
+	            MinHrFieldId,
+	            FitContributor.DATA_TYPE_UINT16,
+	            {:mesgType=>FitContributor.MESG_TYPE_SESSION, :units=>"bpm"}
+	        );
+			
+	        mMinHrField.setData(0);
+	}
+    */
 
     // Initialize sensor readings
     function initialize() {    
@@ -169,7 +187,10 @@ class virtsailingModel
 		    
                 initializeFITLap();
                 //mSession.addLap();
-
+				
+				//HrActivity.initialize(mSession);		
+   				
+   	
 
 		   }
     	//System.println("model init - out");
@@ -177,8 +198,8 @@ class virtsailingModel
 
     // Begin sensor processing
     function start() {
-    	//System.println("model - start");
-  
+    	//System.println("model - start");        	
+    	
         // Start recording
         mSession.start();
   
@@ -193,7 +214,7 @@ class virtsailingModel
     function stop() {
         
         // Stop the FIT recording
-        if ((mSession != null) && mSession.isRecording()) {  
+        if ((mSession != null) && mSession.isRecording()) {              
         	mSession.stop();
         }
     }
@@ -219,6 +240,15 @@ class virtsailingModel
             } else {
                 mSessBoatTypeStrField.setData("all");
             }
+
+            var mWindSpd = Application.getApp().getProperty("wind");
+            if (mWindSpd != null) {
+                //System.println("boat type : " + mBoatType);
+                mSessWindPerLegField.setData(mWindSpd);
+            } else {
+                mSessWindPerLegField.setData(0);
+            }
+
 
             mSessTotalLegsField.setData(_totalLeg.toLong());
             if (_totalLeg != 0) {
@@ -249,7 +279,7 @@ class virtsailingModel
 
     // Discard the current session
     function discard() {
-    	if (mSession != null) {
+    	if (mSession != null) {        
 	        mSession.discard();
 	        mSession = null;
         }
@@ -299,7 +329,8 @@ class virtsailingModel
             //total_strides
             // add stats specific for  activity ?
             //totalArrow = mCurrentArrow;
-            //totalEnds = mCurrentEnds;
+            //totalEnds = mCurrentEnds;             
+
 		}
 	}
 	
@@ -329,7 +360,8 @@ class virtsailingModel
 	    //System.println("x: " + sensor_info.temperature + ", y: " + sensor_info.pressure);
 	    //var steps = info.steps;
     }
-
+		
+	
     // Return the total elapsed recording time
     function getTimeElapsed() {
         //return mSeconds;
@@ -462,7 +494,7 @@ class virtsailingModel
                 //System.println("ring 5");
                 // query attention
                 if (Attention has :vibrate) {
-                    var vibe = [new Attention.VibeProfile(  50, 100 )];
+                    var vibe = [new Attention.VibeProfile(  75, 100 )];
                     Attention.vibrate(vibe);
                 }
     	    }
@@ -485,7 +517,7 @@ class virtsailingModel
     function endTimer() {
         System.println("endTimer");
         if (Attention has :vibrate) {
-            var vibe = [new Attention.VibeProfile(  50, 100 )];
+            var vibe = [new Attention.VibeProfile(  100, 100 )];
             Attention.vibrate(vibe);
         }
     	_legStart = System.getTimer(); //Time.now();    	
